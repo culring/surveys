@@ -19,7 +19,7 @@ class SurveyManager:
             self._headers = next(answers_reader)
             answers = self._preprocess(answers_reader)
         self._estimator = estimator
-        # self._estimator.initialize(answers)
+        self._estimator.initialize(answers)
 
     def add_answer(self, answer: Sequence[single_answer.SingleAnswer]) -> NoReturn:
         """
@@ -64,7 +64,5 @@ class SurveyManager:
 
 if __name__ == '__main__':
     sm = SurveyManager('first_survey.csv', survey_estimator.SurveyEstimator1())
-    sm.add_answer([single_answer.SingleAnswer.NO] * 5)
-    sm.add_answer([single_answer.SingleAnswer.NO] * 5)
-    sm.add_answer([single_answer.SingleAnswer.NO] * 4 + [single_answer.SingleAnswer.YES])
     print(sm.estimate([single_answer.SingleAnswer.NO] * 4 + [single_answer.SingleAnswer.UNKNOWN], 4))
+    sm.add_answer([single_answer.SingleAnswer.NO] * 4 + [single_answer.SingleAnswer.UNKNOWN])
