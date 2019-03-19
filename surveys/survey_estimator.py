@@ -1,8 +1,7 @@
 import abc
-
-from yougov import single_answer
-
 from typing import Sequence, NoReturn, Iterable
+
+from surveys import single_answer
 
 
 class SurveyEstimator(abc.ABC):
