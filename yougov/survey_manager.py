@@ -60,9 +60,3 @@ class SurveyManager:
             preprocessed_answers.append(preprocessed_answer)
 
         return preprocessed_answers
-
-
-if __name__ == '__main__':
-    sm = SurveyManager('first_survey.csv', survey_estimator.SurveyEstimator1())
-    print(sm.estimate([single_answer.SingleAnswer.NO] * 4 + [single_answer.SingleAnswer.UNKNOWN], 4))
-    sm.add_answer([single_answer.SingleAnswer.NO] * 4 + [single_answer.SingleAnswer.UNKNOWN])
