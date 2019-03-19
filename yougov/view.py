@@ -14,13 +14,14 @@ class View:
             '5. Have you previously participated in an online survey?'
         ]
         print('You will be given 5 questions. '
-              'For each of those type T (true), F (false) or U (answer unknown).')
-        for i in range(5):
-            question = questions[i]
+              'For each of those type T (true), F (false) or U (preferred not to answer).')
+        i = 1
+        while i <= 5:
+            question = questions[i - 1]
             answer = input(f'{question}: ')
             if answer in ['T', 'F', 'U']:
-                self._controller.process_response(answer)
+                score = self._controller.process(answer)
+                print(f'Your current chance of becoming a panelist is equal {score * 100}%.')
+                i += 1
             else:
-                print('Invalid type of answer. You can provide either T, F or U. ')
-                i -= 1
-
+                print('Invalid type of answer. You can provide either T, F or U.')
